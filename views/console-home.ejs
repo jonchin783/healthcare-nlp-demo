@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<!-- Head content -->
+<%- include partials/head-content.ejs %>
+
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Site Properties -->
+    <title>Homepage - Semantic</title>
+    <link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
+
+    <link rel="stylesheet" type="text/css" href="../dist/components/container.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/grid.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/header.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/image.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/menu.css">
+
+    <link rel="stylesheet" type="text/css" href="../dist/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/dropdown.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/button.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/list.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/transition.css">
+
+    <style type="text/css">
+
+        .hidden.menu {
+            display: none;
+        }
+
+        .masthead.segment {
+            min-height: 700px;
+            padding: 1em 0em;
+        }
+        .masthead .logo.item img {
+            margin-right: 1em;
+        }
+        .masthead .ui.menu .ui.button {
+            margin-left: 0.5em;
+        }
+        .masthead h1.ui.header {
+            margin-top: 3em;
+            margin-bottom: 0em;
+            font-size: 4em;
+            font-weight: normal;
+        }
+        .masthead h2 {
+            font-size: 1.7em;
+            font-weight: normal;
+        }
+
+        .ui.vertical.stripe {
+            padding: 8em 0em;
+        }
+        .ui.vertical.stripe h3 {
+            font-size: 2em;
+        }
+        .ui.vertical.stripe .button + h3,
+        .ui.vertical.stripe p + h3 {
+            margin-top: 3em;
+        }
+        .ui.vertical.stripe .floated.image {
+            clear: both;
+        }
+        .ui.vertical.stripe p {
+            font-size: 1.33em;
+        }
+        .ui.vertical.stripe .horizontal.divider {
+            margin: 3em 0em;
+        }
+
+        .quote.stripe.segment {
+            padding: 0em;
+        }
+        .quote.stripe.segment .grid .column {
+            padding-top: 5em;
+            padding-bottom: 5em;
+        }
+
+        .footer.segment {
+            padding: 5em 0em;
+        }
+
+        .secondary.pointing.menu .toc.item {
+            display: none;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .ui.fixed.menu {
+                display: none !important;
+            }
+            .secondary.pointing.menu .item,
+            .secondary.pointing.menu .menu {
+                display: none;
+            }
+            .secondary.pointing.menu .toc.item {
+                display: block;
+            }
+            .masthead.segment {
+                min-height: 350px;
+            }
+            .masthead h1.ui.header {
+                font-size: 2em;
+                margin-top: 1.5em;
+            }
+            .masthead h2 {
+                margin-top: 0.5em;
+                font-size: 1.5em;
+            }
+        }
+    </style>
+
+    <script src="assets/library/jquery.min.js"></script>
+    <script src="../dist/components/visibility.js"></script>
+    <script src="../dist/components/sidebar.js"></script>
+    <script src="../dist/components/transition.js"></script>
+    <script>
+        $(document)
+            .ready(function() {
+
+                // fix menu when passed
+                $('.masthead')
+                    .visibility({
+                        once: false,
+                        onBottomPassed: function() {
+                            $('.fixed.menu').transition('fade in');
+                        },
+                        onBottomPassedReverse: function() {
+                            $('.fixed.menu').transition('fade out');
+                        }
+                    })
+                ;
+
+                // create sidebar and attach to menu open
+                $('.ui.sidebar')
+                    .sidebar('attach events', '.toc.item')
+                ;
+
+            })
+        ;
+    </script>
+</head>
+<body>
+<!-- Left Sidebar -->
+<%- include partials/left-sidebar.ejs %>
+
+<div class="pusher" id="main-content">
+    <!-- Top Fixed Menu -->
+    <%- include("partials/top-menu.ejs",{title:"Google Healthcare Natural Language API"}); %>
+    <!-- Page Content -->
+
+    <div class="ui basic segment" style="top:50px">
+        <div class="row">
+            <div class="thirteen wide column">
+                <h2 class="ui top attached header" id="google-healthcare-api-top-field" style="background-color: #f8f8f8">
+                    <img src="/images/medical-icon.png">
+                    <div class="content">
+                        Cloud Healthcare API
+                        <div id="div1" class="sub header">Using natural language models to extract healthcare information from medical text</div>
+                    </div>
+                </h2>
+                <h4 class="ui top attached header" style="background-color: #f8f8f8">
+                    <i class="stethoscope icon"></i>
+                    <div class="content">
+                        Construct data for request
+                    </div>
+                </h4>
+                <div class="ui bottom attached segment">
+                    <div class="grouped fields">
+                        <div class="fields">
+                            <div class="eight wide field">
+                                <label><b>Patient Name:</b></label>
+                                <select class="ui search dropdown selection" id="retrieve_patient_menu">
+                                    <option value="">Choose a patient record</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui stackable sub menu blue" style="background-color: #f8f8f8">
+                        <div class="ui pointing dropdown link item">
+                            <i class="blue user icon"></i>
+                            <span class="text">Use sample records</span>
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item" id="use-sample-medical-record"><i class="blue file alternate outline icon"></i>Sample Medical Record</a>
+                                <a class="item" id="use-sample-research-paper"><i class="blue sticky note outline icon"></i>Sample Research Paper</a>
+                                <a class="item" id="use-sample-lab-form"><i class="blue wpforms icon"></i>Sample Lab Form</a>
+                            </div>
+                        </div>
+                        <a class="item" id="clear-document"><i class="trash alternate blue icon"></i>Clear</a>
+                        <a class="top right item" id="analyze-button" input type="button"><i class="blue upload icon"></i>Analyze</a>
+                    </div>
+
+                    <div class="ui bottom attached segment" id="document-content-segment">
+                        <div class="grouped fields">
+                            <div class="ui form">
+                                <div class="field">
+                                    <label>Document Content</label>
+                                    <textarea rows="30" id="document-content"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="ui horizontal divider header" id="analysis-results-horizontal-divider" style="display:none">
+                        <i class="medkit icon"></i>
+                        Healthcare API Analysis Results
+                    </h4>
+                    <div class="ui top attached stackable tabular menu" style="background-color: #f8f8f8" id="result-menu-bar">
+                        <a class="item active" id="first-tab" data-tab="first">Knowledge Panel</a>
+                        <a class="item" id="second-tab" data-tab="second">Context Assessment</a>
+                        <a class="item" id="third-tab" data-tab="third">Relation Extraction</a>
+                        <a class="item" id="fourth-tab" data-tab="fourth">View JSON output</a>
+                        <a class="item" id="fifth-tab" data-tab="fifth">Save Analysis On-premise Storage</a>
+                    </div>
+                    <div class="ui bottom attached tab segment active" data-tab="first" id="knowledge-panel-body">
+                        <div id="knowledge-parent-card" class="ui four stackable cards" >
+                        </div>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="second" id="context-assess-body">
+                        <div id="context-parent-card" class="ui four stackable cards" >
+                        </div>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="third" id="relation-extract-body">
+                        <div id="relations-parent-card" class="ui stackable cards" >
+                        </div>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="fourth" id="view-json-body" >
+                        <div class="ui form">
+                            <div class="field">
+                                <textarea rows="40" id="json-output-content"></textarea>
+                            </div>
+                        </div>
+                        <div class="ui bottom attached segment" id="view-json-buttons" style="display:block">
+                            <div class="grouped stackable fields">
+                                <div class="fields" id="ns-info-fields">
+                                    <div class="twenty wide field" id="abId0.9531293131914467">
+                                        <button class="ui blue small button" data-tooltip="Copy the JSON output to clipboard" data-position="top left" type="submit" id="copy-json-output"><i class="copy icon"></i><span>Copy to clipboard</span></button>
+                                        <button class="ui blue small button" data-tooltip="Download JSON output to your local machine" data-position="top left" type="submit" id="save-json-output"><i class="download icon"></i><span>Download File</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="fifth" id="view-json-body" >
+                        TBD
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="ui horizontal divider header" id="services_div">
+    </h4>
+    <h4 class="ui horizontal divider" id="services_div">
+    </h4>
+    <h4 class="ui horizontal divider header" id="services_div">
+    </h4>
+    <h4 class="ui horizontal divider" id="services_div">
+    </h4>
+    <div class="spinner" id="sole_spinner" style="display:none"></div>
+    </div>
+</div>
+
+
+<!-- Java Scripts-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> -->
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.semanticui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.semanticui.min.js"></script>
+<script type="text/javascript" src="/js/Semantic-UI-Alert.js"></script>
+<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="/semantic/dist/semantic.min.js"></script>
+<script src="/js/load-nlp.js"></script>
+<script src="assets/library/jquery.min.js"></script>
+<script src="../dist/components/visibility.js"></script>
+<script src="../dist/components/sidebar.js"></script>
+<script src="../dist/components/transition.js"></script>
+</body>
+
+</html>
+
