@@ -1,4 +1,4 @@
-# healthcare-nlp-demo
+# Google Healthcare Natural Language API demo on Kubernetes
 
 This repository contains a Node.js microservices application for interfacing with Google Cloud Healthcare API designed to work on Google Kubernetes Engine (GKE), Anthos or other Kubernetes environments. Cloud Healthcare API (https://cloud.google.com/healthcare) provides a pathway to intelligent analytics and machine learning capabilities in Google Cloud with pre-built connectors for streaming data processing in Dataflow, scalable analytics with BigQuery, and machine learning with Vertex AI.
 
