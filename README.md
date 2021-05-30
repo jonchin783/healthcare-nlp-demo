@@ -11,32 +11,41 @@ Special mention and thanks go to asrivas@ and zackAkil@ for contributing to an e
    "https://healthcare.googleapis.com/v1beta1/projects/PROJECT_ID/locations/LOCATION/services/nlp:analyzeEntities"
    
    
-2. Create a service account in your project which will be used for authentication. The service account needs to have role "healthcare.nlpServiceViewer" associated with it. Here is an example to do this in gcloud command line:
+2. Create a service account in your project which will be used for authentication.
+
+### 
+    gcloud iam service-accounts create SERVICE_ACCOUNT_NAME 
+
+3. The service account needs to have role "healthcare.nlpServiceViewer" associated with it. Here is an example to do this in gcloud command line:
 
 ### 
     gcloud projects add-iam-policy-binding PROJECT_ID \
         --member serviceAccount:SERVICE_ACCOUNT_ID \
         --role roles/healthcare.nlpServiceViewer
     
-3. Download the JSON key from your service account. You will need this key later when setting up your Kubernetes environment.
-4. Prepare your Kubernetes cluster for hosting the application. You can use GKE, Anthos or any other Kubernetes environment. If GKE, a zonal cluster with two worker nodes of machine-type n1-standard-2 is good enough for running this demo application.
-5. Once your cluster is ready, create a new namespace named "healthcare", e.g.
+4. Download the JSON key from your service account. You need to name the JSON key as "healthcare-nlp.json". You will need this key later when setting up your Kubernetes environment.
+
+### 
+    gcloud iam service-accounts keys create healthcare-nlp.json --iam-account SERVICE_ACCOUNT_ID 
+        
+5. Prepare your Kubernetes cluster for hosting the application. You can use GKE, Anthos or any other Kubernetes environment. If GKE, a zonal cluster with two worker nodes of machine-type n1-standard-2 is good enough for running this demo application.
+6. Once your cluster is ready, create a new namespace named "healthcare", e.g.
 
 ### 
     kubectl create ns healthcare
     
-6. Create a secret with your JSON key (named "healthcare-nlp.json" in my example) in step (3), e.g. 
+7. Create a secret with your JSON key (named "healthcare-nlp.json") in step (3), e.g. 
 
 ### 
     kubectl create secret generic gcp-nlp-serviceaccount --from-file=./healthcare-nlp.json -n healthcare
 
-7. Create a configmap to setup environment variables to be used by the application. There are two variables required - "PORT" for exposing the internal port of the application on your cluster, and "GCP_HEALTHCARE_API" for your URL endpoint in step (1). Here's my example - 
+8. Create a configmap to setup environment variables to be used by the application. There are two variables required - "PORT" for exposing the internal port of the application on your cluster, and "GCP_HEALTHCARE_API" for your URL endpoint in step (1). Here's my example - 
 
 ### 
     kubectl create configmap gcp-nlp-config -n healthcare --from-literal=GCP_HEALTHCARE_API=https://healthcare.googleapis.com/v1beta1/projects/PROJECT ID /locations/LOCATION/services/nlp:analyzeEntities --from-literal=PORT=9000
 
-8. Next, clone this repository and build your container with the Dockerfile I have provided and host it on your private docker repository. Alternatively, you can choose to use my container image - gcr.io/jonchin-gps-argolis/healthcare-demo:v1.
-9. Create a deployment and service on your cluster for the app, for example:
+9. Next, clone this repository and build your container with the Dockerfile I have provided and host it on your private docker repository. Alternatively, you can choose to use my container image - gcr.io/jonchin-gps-argolis/healthcare-demo:v1.
+10. Create a deployment and service on your cluster for the app, for example:
 
 ### sample kubernetes deployment manifest
 
