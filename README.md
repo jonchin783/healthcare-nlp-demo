@@ -28,7 +28,7 @@ Special mention and thanks go to asrivas@ and zackAkil@ for contributing to an e
 8. Next, clone this repository and build your container with the Dockerfile I have provided and host it on your private docker repository. Alternatively, you can choose to use my container image - gcr.io/jonchin-gps-argolis/healthcare-demo:v1.
 9. Create a deployment and service on your cluster for the app, for example:
 
-### sample deployment manifest
+### sample kubernetes deployment manifest
 
     apiVersion: apps/v1
     kind: Deployment
@@ -77,7 +77,7 @@ Special mention and thanks go to asrivas@ and zackAkil@ for contributing to an e
               secretName: gcp-nlp-serviceaccount
 
            
-### sample service manifest
+### sample kubernetes service manifest
 
     apiVersion: v1
     kind: Service
