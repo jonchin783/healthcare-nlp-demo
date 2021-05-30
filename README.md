@@ -98,6 +98,28 @@ Special mention and thanks go to asrivas@ and zackAkil@ for contributing to an e
 
 ## Running the application
 
-Once your deployment is ready and your pod is running, check the Load Balancer IP address exposed by your service. Browse to the application with http://<load balancer IP address>.
+Once your deployment is ready and your pod is running, check the Load Balancer IP address exposed by your service. Browse to the application with http://<load balancer IP address>. The current version of the application does not have a backend user database setup with it yet, click login button without any username or password to login.
   
+
+   ![screencast](/assets/images/healthcare-app-screenshot-1.png)
   
+In the main screen, enter or paste your medical or heatlh report text into the document content text field, then click on the button "Analyze" near the top right.
+   
+   ![screencast](/assets/images/healthcare-app-screenshot-2.png)
+   
+The Healthcare Natural Language API uses context-aware models to extract medical entities, relations, and contextual attributes. Each text entity is extracted into a medical dictionary entry. If the request is successful, the response includes the following information:
+
+- Recognized medical knowledge entities
+- Functional features
+- Relations between the recognized entities
+- Contextual attributes
+- Mappings of the medical knowledge entities into standard terminologies
+   
+Sample output:
+   
+   ![screencast](/assets/images/healthcare-app-screenshot-3.png)
+
+## Future versions of this application
+   
+- user/patient database store, authenticated logins.
+- storing of analyzed medical report onto on-premise persistent datastore in kubernetes
