@@ -20,7 +20,11 @@ Special mention and thanks go to asrivas@ and zackAkil@ for contributing to an e
     
 3. Download the JSON key from your service account. You will need this key later when setting up your Kubernetes environment.
 4. Prepare your Kubernetes cluster for hosting the application. You can use GKE, Anthos or any other Kubernetes environment. If GKE, a zonal cluster with two worker nodes of machine-type n1-standard-2 is good enough for running this demo application.
-5. Once your cluster is ready, create a new namespace named "healthcare", e.g. - kubectl create ns healthcare
+5. Once your cluster is ready, create a new namespace named "healthcare", e.g.
+
+### 
+    kubectl create ns healthcare
+    
 6. Create a secret with your JSON key (named "healthcare-nlp.json" in my example) in step (3), e.g. 
 
 ### 
