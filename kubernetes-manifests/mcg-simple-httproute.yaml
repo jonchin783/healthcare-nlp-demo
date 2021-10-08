@@ -1,0 +1,17 @@
+kind: HTTPRoute
+apiVersion: networking.x-k8s.io/v1alpha1
+metadata:
+  name: mcg-simple-route
+  namespace: mcg-demo
+  labels:
+    gateway: external-http
+spec:
+  hostnames:
+  - "*"
+  rules:
+  - forwardTo:
+    - backendRef:
+        group: net.gke.io
+        kind: ServiceImport
+        name: mcg-demo
+      port: 8080

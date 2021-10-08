@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 require('dotenv').config()
-var port = process.env.PORT || 8888;
+var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -30,7 +30,7 @@ app.use(favicon(__dirname + '/assets/images/google-favicon.jpeg'));
 app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, 'bower_components')))
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+//mongoose.connect(configDB.url); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -60,4 +60,4 @@ require('./app/routes.js')(app, passport);
 
 // launch the server
 app.listen(port);
-console.log('Google GPS healthcare demo app is listening on port ' + port);
+console.log('Google Multi-Cluster Gateway Demo app is listening on port ' + port);

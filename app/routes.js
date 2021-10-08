@@ -5,13 +5,68 @@ module.exports = function (app, passport) {
     var api_controller = require('./controllers/api-controller');
     app.use(bodyParser());
 
+    var podName = process.env.MY_POD_NAME;
+    var nodeName = process.env.MY_NODE_NAME;
+    var nodeIP = process.env.MY_NODE_IP;
+    var podNamespace = process.env.MY_POD_NAMESPACE;
+    var podIP = process.env.MY_POD_IP;
+    var podServiceAccount = process.env.MY_POD_SERVICE_ACCOUNT;
+
+    var gcpRegion = process.env.GCP_REGION;
+
+    if (gcpRegion === "asia-southeast1") {
+        var regionName = "Singapore - asia-southeast1 region";
+        var colorCode = "green";
+    } else if (gcpRegion === "asia-east1") {
+        var regionName = "Taiwan - asia-east1 region";
+        var colorCode = "red";
+    } else if (gcpRegion === "asia-east2") {
+        var regionName = "Hong Kong - asia-east2 region";
+        var colorCode = "yellow";
+    } else if (gcpRegion === "asia-southeast2") {
+        var regionName = "Indonesia - asia-southeast2 region";
+        var colorCode = "blue";
+    } else if (gcpRegion === "asia-south1") {
+        var regionName = "Mumbai - asia-south1 region";
+        var colorCode = "pink";
+    } else if (gcpRegion === "asia-south2") {
+        var regionName = "Delhi - asia-south2 region";
+        var colorCode = "brown";
+    } else if (gcpRegion === "australia-southeast1") {
+        var regionName = "Sydney - australia-southeast1 region";
+        var colorCode = "olive";
+    } else if (gcpRegion === "australia-southeast2") {
+        var regionName = "Melbourne - australia-southeast2 region";
+        var colorCode = "orange";
+    } else if (gcpRegion === "asia-northeast1") {
+        var regionName = "Tokyo - asia-northeast1 region";
+        var colorCode = "teal";
+    } else if (gcpRegion === "asia-northeast2") {
+        var regionName = "Osaka - asia-northeast2 region";
+        var colorCode = "violet";
+    } else {
+        var regionName = "Unknown GCP region";
+        var colorCode = "black";
+    }
+
+
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
+    //app.get('/', function(req, res) {
+    //    res.render('console-home.ejs', { message: req.flash('loginMessage') }); // load the index.ejs file
+    //});
     app.get('/', function(req, res) {
-        res.render('login.ejs', { message: req.flash('loginMessage') }); // load the index.ejs file
+        res.render('console-home.ejs', { podName: podName,
+            nodeName: nodeName,
+            nodeIP: nodeIP,
+            podNamespace: podNamespace,
+            podIP: podIP,
+            podServiceAccount: podServiceAccount,
+            colorCode: colorCode,
+            regionName: regionName
+        }); // load the index.ejs file
     });
-
     // =====================================
     // LOGIN ===============================
     // =====================================

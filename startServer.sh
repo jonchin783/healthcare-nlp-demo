@@ -1,2 +1,2 @@
 #!/bin/bash
-nohup node nso-portal.js > server.log &
+nohup node server.js > server.log &

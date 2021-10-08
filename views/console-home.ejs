@@ -153,104 +153,105 @@
 
 <div class="pusher" id="main-content">
     <!-- Top Fixed Menu -->
-    <%- include("partials/top-menu.ejs",{title:"Google Healthcare Natural Language API"}); %>
+    <%- include("partials/top-menu.ejs",{title:"Google Multi-Cluster Ingress and Gateway Demo App"}); %>
     <!-- Page Content -->
 
     <div class="ui basic segment" style="top:50px">
         <div class="row">
             <div class="thirteen wide column">
-                <h2 class="ui top attached header" id="google-healthcare-api-top-field" style="background-color: #f8f8f8">
-                    <img src="/images/medical-icon.png">
+                <h2 class="ui top attached header" id="google-mcg-api-top-field" style="background-color: #f8f8f8">
+                    <img class="ui image" src="/images/anthos-google-cloud-logo.png">
                     <div class="content">
-                        Cloud Healthcare API
-                        <div id="div1" class="sub header">Using natural language models to extract healthcare information from medical text</div>
+                        Multi-Cluster Gateway and Ingress
+                        <div id="div1" class="sub header">Load Balancing Traffic across multiple regional Google Kubernetes Engine clusters</div>
                     </div>
                 </h2>
                 <h4 class="ui top attached header" style="background-color: #f8f8f8">
-                    <i class="stethoscope icon"></i>
+                    <i class="docker icon"></i>
                     <div class="content">
-                        Construct data for request
+                        Container Pod Metadata Information
                     </div>
                 </h4>
                 <div class="ui bottom attached segment">
-                    <div class="grouped fields">
-                        <div class="fields">
-                            <div class="eight wide field">
-                                <label><b>Patient Name:</b></label>
-                                <select class="ui search dropdown selection" id="retrieve_patient_menu">
-                                    <option value="">Choose a patient record</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="ui stackable sub menu blue" style="background-color: #f8f8f8">
-                        <div class="ui pointing dropdown link item">
-                            <i class="blue user icon"></i>
-                            <span class="text">Use sample records</span>
-                            <i class="dropdown icon"></i>
-                            <div class="menu">
-                                <a class="item" id="use-sample-medical-record"><i class="blue file alternate outline icon"></i>Sample Medical Record</a>
-                                <a class="item" id="use-sample-research-paper"><i class="blue sticky note outline icon"></i>Sample Research Paper</a>
-                                <a class="item" id="use-sample-lab-form"><i class="blue wpforms icon"></i>Sample Lab Form</a>
-                            </div>
-                        </div>
-                        <a class="item" id="clear-document"><i class="trash alternate blue icon"></i>Clear</a>
-                        <a class="top right item" id="analyze-button" input type="button"><i class="blue upload icon"></i>Analyze</a>
-                    </div>
-
-                    <div class="ui bottom attached segment" id="document-content-segment">
+                    <div class="ui <%= colorCode %> message"><%= regionName %></div>
+                    <div class="ui basic segment">
                         <div class="grouped fields">
                             <div class="ui form">
                                 <div class="field">
-                                    <label>Document Content</label>
-                                    <textarea rows="30" id="document-content"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="ui horizontal divider header" id="analysis-results-horizontal-divider" style="display:none">
-                        <i class="medkit icon"></i>
-                        Healthcare API Analysis Results
-                    </h4>
-                    <div class="ui top attached stackable tabular menu" style="background-color: #f8f8f8" id="result-menu-bar">
-                        <a class="item active" id="first-tab" data-tab="first">Knowledge Panel</a>
-                        <a class="item" id="second-tab" data-tab="second">Context Assessment</a>
-                        <a class="item" id="third-tab" data-tab="third">Relation Extraction</a>
-                        <a class="item" id="fourth-tab" data-tab="fourth">View JSON output</a>
-                        <a class="item" id="fifth-tab" data-tab="fifth">Save Analysis On-premise Storage</a>
-                    </div>
-                    <div class="ui bottom attached tab segment active" data-tab="first" id="knowledge-panel-body">
-                        <div id="knowledge-parent-card" class="ui four stackable cards" >
-                        </div>
-                    </div>
-                    <div class="ui bottom attached tab segment" data-tab="second" id="context-assess-body">
-                        <div id="context-parent-card" class="ui four stackable cards" >
-                        </div>
-                    </div>
-                    <div class="ui bottom attached tab segment" data-tab="third" id="relation-extract-body">
-                        <div id="relations-parent-card" class="ui stackable cards" >
-                        </div>
-                    </div>
-                    <div class="ui bottom attached tab segment" data-tab="fourth" id="view-json-body" >
-                        <div class="ui form">
-                            <div class="field">
-                                <textarea rows="40" id="json-output-content"></textarea>
-                            </div>
-                        </div>
-                        <div class="ui bottom attached segment" id="view-json-buttons" style="display:block">
-                            <div class="grouped stackable fields">
-                                <div class="fields" id="ns-info-fields">
-                                    <div class="twenty wide field" id="abId0.9531293131914467">
-                                        <button class="ui blue small button" data-tooltip="Copy the JSON output to clipboard" data-position="top left" type="submit" id="copy-json-output"><i class="copy icon"></i><span>Copy to clipboard</span></button>
-                                        <button class="ui blue small button" data-tooltip="Download JSON output to your local machine" data-position="top left" type="submit" id="save-json-output"><i class="download icon"></i><span>Download File</span></button>
+                                    <div class="ui eight stackable cards">
+                                        <div class="raised green fluid card">
+                                            <div class="content">
+                                                <img class="center floated tiny ui image" src="/images/pod-128.png">
+                                                <h2 class="description">
+                                                    <%= podName %>
+                                                </h2>
+                                                <h2 class="header">
+                                                    Container Pod Name
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <div class="raised green fluid card">
+                                            <div class="content">
+                                                <img class="center floated tiny ui image" src="/images/ing-128.png">
+
+                                                <h2 class="description">
+                                                    <%= podIP %>
+                                                </h2>
+                                                <h2 class="header">
+                                                    Container Pod IP Address
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <div class="raised green fluid card">
+                                            <div class="content">
+                                                <img class="center floated tiny ui image" src="/images/node-128.png">
+                                                <h2 class="description">
+                                                    <%= nodeName %>
+                                                </h2>
+                                                <h2 class="header">
+                                                    Worker Node Name
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <div class="raised green fluid card">
+                                            <div class="content">
+                                                <img class="center floated tiny ui image" src="/images/node-128.png">
+                                                <h2 class="description">
+                                                    <%= nodeIP %>
+                                                </h2>
+                                                <h2 class="header">
+                                                    Worker Node IP Address
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <div class="raised green fluid card">
+                                            <div class="content">
+                                                <img class="center floated tiny ui image" src="/images/ns-128.png">
+
+                                                <h2 class="description">
+                                                    <%= podNamespace %>
+                                                </h2>
+                                                <h2 class="header">
+                                                    Container Pod Namespace
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <div class="raised green fluid card">
+                                            <div class="content">
+                                                <img class="center floated tiny ui image" src="/images/sa-128.png">
+
+                                                <h2 class="description">
+                                                    <%= podServiceAccount %>
+                                                </h2>
+                                                <h2 class="header">
+                                                    Container Pod Service Account
+                                                </h2>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="ui bottom attached tab segment" data-tab="fifth" id="view-json-body" >
-                        TBD
                     </div>
                 </div>
             </div>
@@ -265,10 +266,8 @@
     </h4>
     <h4 class="ui horizontal divider" id="services_div">
     </h4>
-    <div class="spinner" id="sole_spinner" style="display:none"></div>
-    </div>
 </div>
-
+</div>
 
 <!-- Java Scripts-->
 
@@ -281,8 +280,8 @@
 <script src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.semanticui.min.js"></script>
 <script type="text/javascript" src="/js/Semantic-UI-Alert.js"></script>
 <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="/js/load-pod-metadata.js"></script>
 <script src="/semantic/dist/semantic.min.js"></script>
-<script src="/js/load-nlp.js"></script>
 <script src="assets/library/jquery.min.js"></script>
 <script src="../dist/components/visibility.js"></script>
 <script src="../dist/components/sidebar.js"></script>
